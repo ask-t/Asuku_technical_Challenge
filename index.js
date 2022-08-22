@@ -3,7 +3,7 @@ const axios = require('axios');
 const oracle = require('oracledb');
 oracle.outFormat = oracle.OBJECT;
 oracle.autoCommit =true;
-const token = 'L09EW23ouZGFAsbLfNuCGULR39No1J8CokK2-2JSMW8.5p5LJ4auy1Ohwpy7yn7vXIa-qbRTvlwsJfSItDGke1E'
+const token = 'RA6xlwrOu2T19plpLNXMwnWlfkc_0lOTp00XKdpfpDA.5Ow6cBL7yQeOHBF9KVtpjoof0ojTX94Kn2BRJ-nDnbg'
 const AWS = require('aws-sdk');
 AWS.config.update({region:'us-west-2'});
 const ssm = new AWS.SSM()
