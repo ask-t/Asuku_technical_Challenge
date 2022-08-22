@@ -1,4 +1,3 @@
-// const byu_id = 249226495;
 const axios = require('axios');
 const oracle = require('oracledb');
 oracle.outFormat = oracle.OBJECT;
