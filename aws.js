@@ -1,3 +1,13 @@
+/**
+ * @file fetch username and password for database from AWS.
+ * @author Asuku Takahashi
+ * @returns {Promise<string>}
+ * Last edited: August 30, 2022 - orgnized jsdocs and add coments.
+ */
+
+
+
+
 const AWS = require('aws-sdk');
 AWS.config.update({region:'us-west-2'});
 const ssm = new AWS.SSM()
