@@ -1,3 +1,10 @@
+/**
+ * @file This file has functions controll database with SQL.
+ * @author Asuku Takahashi
+ * Last edited: August 30, 2022 - orgnized jsdocs and add coments.
+ */
+
+
 const oracle = require('oracledb');
 oracle.outFormat = oracle.OBJECT;
 oracle.autoCommit =true;
@@ -5,6 +12,10 @@ const a = require('./input');
 const input = a.input
 
 
+  /**
+ * check whether it is possible to access to the database.
+ * @returns {Promise<void>}
+ */
 async  function testOracleConnectivity(params) {
 try {
     console.log(' Testing connecting');
@@ -19,6 +30,11 @@ try {
 }
 }
 
+  /**
+ * create new table if there is not the table for this program.
+ * @params it is necessary to use param which is token to be able to accless the database.
+ * @returns {Promise<void>}
+ */
 async function createToTable (params){
     try{
         const conn = await oracle.getConnection(params);
@@ -30,6 +46,11 @@ async function createToTable (params){
     }
 }
 
+  /**
+ * add the table from the student information.
+ * @params it is necessary to use param which is token to be able to accless the database. and other parameters from student information are necessary to add new table
+ * @returns {Promise<void>}
+ */
 async function addToTable (D,byu_id,name,club_id,club_name,params){
     try{
         console.log(`\nAdds something to the table byu_id: ${byu_id} Name: ${name}`);
@@ -46,6 +67,11 @@ async function addToTable (D,byu_id,name,club_id,club_name,params){
     }
 }
 
+  /**
+ * access the database and show the table.
+ * @params it is necessary to use param which is token to be able to accless the database.
+ * @returns {Promise<void>}
+ */
 async function seeTable (params){
     try{
         const conn = await oracle.getConnection(params);
@@ -54,9 +80,15 @@ async function seeTable (params){
         await conn.close();
     } catch (e){
         console.error(e)
-        intro();
+
     }
 }
+
+  /**
+ * Choose ID and then it will be deleted in the database.
+ * @params it is necessary to use param which is token to be able to accless the database.
+ * @returns {Promise<void>}
+ */
 
 async function delete_db(params){
     await testOracleConnectivity(params);
