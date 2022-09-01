@@ -1,3 +1,12 @@
+/**
+ * Survey of interest club_activities
+ * This program shows the more specific informaiton of club activity.
+ * @file Controls the flow of the program
+ * @author Asuku Takahashi
+ * Last edited: August 30, 2022 - orgnized jsdocs and add coments.
+ */
+
+
 const axios = require('axios');
 const index = require('./token')
 const token = index.token;
@@ -5,6 +14,12 @@ const db = require('./database');
 const inp = require('./input');
 const input = inp.input;
 let D,club_id,club_name;
+
+  /**
+ * show more detail of each club activity.
+ * @params it is take the data of byu_id and name from persons API also, it is necessary to use param which is token to be able to accless the database.
+ * @returns {Promise<void>}
+ */
 
 async function detail(byu_id,name,params){                                                                          // show more detail about the clubs, and if people are interested in it, it is possible to save into this information into the database.
     let question, interest;
