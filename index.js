@@ -1,3 +1,12 @@
+/**
+ * Survey of interest club_activities
+ * This program shows the list of all club activities in BYU and in detail.
+ * @file Controls the flow of the program
+ * @author Asuku Takahashi
+ * Last edited: August 30, 2022 - orgnized jsdocs and add coments.
+ */
+
+
 const aws = require('./aws');
 const axios = require('axios');
 const index = require('./token')
@@ -10,10 +19,15 @@ const input = a.input
 let byu_id,name;
 
 
+/**
+ * get the username from perons API with BYU_ID. then control all flows.
+ * @returns {Promise<void>}
+ */
 
-
-(async function intro(){
+(async function main(){
     let choose;
+
+
     const params = {
         user: await aws.db_name.then(i => i.Value),
         password: await aws.db_pass.then(i =>i.Value),
@@ -53,12 +67,11 @@ let byu_id,name;
                 continue;
             }
         }
-        await db.testOracleConnectivity(params);                                                                           //check wether it is possible to access to the database
-        db.createToTable (params);                                                                                               // To save the information into database, create new table.
-        console.clear();
-       await page.page();    // this function can separate the list from the API to be able to understand more easily.
-       await detail.detail(byu_id,name,params);                        // this function can show more detail information of the clubs.
-       console.log('Thank you for your corpolation.')
+        await db.testOracleConnectivity(params);   //check wether it is possible to access to the database
+        await db.createToTable (params);           // To save the information into database, create new table.
+        await page.page();    // this function can separate the list from the API to be able to understand more easily.
+        await detail.detail(byu_id,name,params);                        // this function can show more detail information of the clubs.
+        console.log('Thank you for your corpolation.')
     }else if(choose == '2'){
         db.delete_db(params);
     }
